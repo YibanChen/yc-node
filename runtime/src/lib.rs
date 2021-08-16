@@ -300,6 +300,12 @@ where
     type Extrinsic = UncheckedExtrinsic;
 }
 
+impl pallet_utility::Config for Runtime {
+    type Event = Event;
+    type Call = Call;
+    type WeightInfo = ();
+}
+
 impl pallet_note::Config for Runtime {
     type Event = Event;
     type NoteIndex = u32;
@@ -323,6 +329,8 @@ construct_runtime!(
         // Include the custom logic from the pallet-template in the runtime.
         TemplateModule: pallet_template::{Pallet, Call, Storage, Event<T>},
         Nft: orml_nft::{Pallet, Storage, Config<T>},
+        // Utility pallet, for batch calls
+        Utility: pallet_utility::{Pallet, Call, Event},
         // YibanChen Substrate Note pallet
         Note: pallet_note::{Pallet, Storage, Call, Event<T>},
     }

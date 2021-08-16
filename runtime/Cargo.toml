@@ -54,6 +54,7 @@ std = [
     'sp-transaction-pool/std',
     'sp-version/std',
 	'orml-nft/std',
+    'pallet-utility/std',
 ]
 [dependencies.codec]
 default-features = false
@@ -102,6 +103,12 @@ version = '3.0.0'
 [dependencies.hex-literal]
 optional = true
 version = '0.3.1'
+
+[dependencies.pallet-utility] 
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+version = "3.0.0"
 
 [dependencies.pallet-aura]
 default-features = false
