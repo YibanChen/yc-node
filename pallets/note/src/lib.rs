@@ -93,11 +93,13 @@ pub mod pallet {
         pub fn create(origin: OriginFor<T>, ipfs_cid: Vec<u8>) -> DispatchResult {
             let sender = ensure_signed(origin)?;
             let current_id = Self::get_next_note_id()?;
+            // Create new note
             let note = Note(ipfs_cid);
+            // Insert note into Notes data storage
             Notes::<T>::insert(&sender, current_id, &note);
             // Emit event
             Self::deposit_event(Event::NoteCreated(sender, current_id, note));
-
+            // Return success
             Ok(())
         }
 
@@ -107,21 +109,14 @@ pub mod pallet {
             let sender = ensure_signed(origin)?;
 
             Notes::<T>::try_mutate_exists(sender.clone(), note_id, |note| -> DispatchResult {
-                // if sender == sender {
-                //     ensure!(note.is_some(), Error::<T>::InvalidNoteId);
-                //     return Ok(());
-                // }
-
-                // let _n = note.take().ok_or(Error::<T>::InvalidNoteId)?;
-                // ensure!(note.is_some(), Error::<T>::InvalidNoteId);
+                // Test the user owns this note
                 let _n = note.take().ok_or(Error::<T>::InvalidNoteId)?;
-
                 let s = sender.clone();
-
+                // Remove note from Notes data structure
                 Notes::<T>::remove(sender, note_id);
-
+                // Emit event
                 Self::deposit_event(Event::NoteBurned(s, note_id));
-
+                // Return success
                 Ok(())
             })
         }
