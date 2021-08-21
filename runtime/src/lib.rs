@@ -41,7 +41,6 @@ use pallet_transaction_payment::CurrencyAdapter;
 pub use sp_runtime::BuildStorage;
 pub use sp_runtime::{Perbill, Permill};
 
-
 /// Import the template pallet.
 pub use pallet_template;
 
@@ -279,7 +278,6 @@ parameter_types! {
     pub const DefaultDifficulty: u32 = 100;
 }
 
-
 parameter_types! {
     pub const MaxClassMetadata: u32 = 0;
     pub const MaxTokenMetadata: u32 = 0;
@@ -302,6 +300,17 @@ where
     type Extrinsic = UncheckedExtrinsic;
 }
 
+impl pallet_utility::Config for Runtime {
+    type Event = Event;
+    type Call = Call;
+    type WeightInfo = ();
+}
+
+impl pallet_note::Config for Runtime {
+    type Event = Event;
+    type NoteIndex = u32;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
     pub enum Runtime where
@@ -320,6 +329,10 @@ construct_runtime!(
         // Include the custom logic from the pallet-template in the runtime.
         TemplateModule: pallet_template::{Pallet, Call, Storage, Event<T>},
         Nft: orml_nft::{Pallet, Storage, Config<T>},
+        // Utility pallet, for batch calls
+        Utility: pallet_utility::{Pallet, Call, Event},
+        // YibanChen Substrate Note pallet
+        Note: pallet_note::{Pallet, Storage, Call, Event<T>},
     }
 );
 
