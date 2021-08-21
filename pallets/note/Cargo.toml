@@ -13,8 +13,6 @@ sp-io = { git = 'https://github.com/paritytech/substrate.git', branch = 'polkado
 sp-runtime = { git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.8', default-features = false }
 sp-std = { git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.8', default-features = false }
 
-# pallet-randomness-collective-flip = { git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.8', default-features = false }
-
 [dev-dependencies]
 sp-core = { git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.8' }
 serde = { version = "1.0.119" }
