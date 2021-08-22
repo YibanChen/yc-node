@@ -66,7 +66,7 @@ Select the `transfer` method. Select "to" account `Bob`. Then submit the transac
 
 
 ### STEP 3 - Read a Note
-Next go to the `Network -> Explorer` tab, select `note` for the state query. Select AccountId `Bob` and note_id `0`. This will display the note that we created and the contained information.
+Next go to the `Developer -> Chain state` tab, select `note` for the state query. Select AccountId `Bob` and note_id `0`. This will display the note that we created and the contained information.
 <p align="center">
   <img alt="step3" src="./images/read.png">
 </p>
