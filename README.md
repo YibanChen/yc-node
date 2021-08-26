@@ -1,4 +1,4 @@
-# Substrate Node
+# Substrate Node / YibanChen project
 
 ### Rust Setup
 

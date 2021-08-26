@@ -5,13 +5,13 @@ First, follow the [Rust Setup](./rust-setup.md).
 Then run the following command to git clone the node source code.
 
 ```bash
-git clone https://github.com/YibanChen/YibanChen-node
+git clone https://github.com/YibanChen/yc-node
 ```
 
 Next you can run the following command to run the unit tests.
 
 ```bash
-cd YibanChen-node && cargo test --release
+cd yc-node && cargo test --release
 ```
 
 Next you can run the following command to build and run the node.
