@@ -89,3 +89,29 @@ fn can_create() {
         )));
     });
 }
+
+#[test]
+fn can_transfer() {
+    new_test_ext().execute_with(|| {
+        let note = Note("test".as_bytes().to_vec());
+
+        assert_ok!(NotesModule::create(
+            Origin::signed(100),
+            "test".as_bytes().to_vec()
+        ));
+
+        assert_noop!(
+            NotesModule::transfer(Origin::signed(101), 200, 0),
+            Error::<Test>::InvalidNoteId
+        );
+
+        assert_ok!(NotesModule::transfer(Origin::signed(100), 200, 0));
+
+        assert_eq!(NotesModule::notes(200, 0), Some(note));
+        assert_eq!(Notes::<Test>::contains_key(100, 0), false);
+
+        System::assert_last_event(Event::NotesModule(crate::Event::NoteTransferred(
+            100, 200, 0,
+        )));
+    });
+}
