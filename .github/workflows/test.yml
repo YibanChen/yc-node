@@ -5,9 +5,11 @@ on:
   pull_request:
     branches:
     - master
+    - site-m2
   push:
     branches:
     - master
+    - site-m2
 
 jobs:
   build:
