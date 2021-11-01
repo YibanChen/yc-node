@@ -132,11 +132,6 @@ pub mod pallet {
 
             // Create new Site
 
-            let new_site = Site {
-                ipfs_cid: ipfs_cid.clone(),
-                site_name: site_name.clone(),
-            };
-
             let site = Site {
                 ipfs_cid: ipfs_cid.clone(),
                 site_name: site_name.clone(),
@@ -177,24 +172,16 @@ pub mod pallet {
         pub fn modify(
             origin: OriginFor<T>,
             ipfs_cid: Vec<u8>,
-            site_name: Vec<u8>,
+            _site_name: Vec<u8>,
             site_id: T::SiteIndex,
         ) -> DispatchResult {
             let sender = ensure_signed(origin)?;
-
-            let site2 = Site {
-                ipfs_cid: ipfs_cid.clone(),
-                site_name: site_name.clone(),
-            };
-
             let owner = sender.clone();
 
             Sites::<T>::try_mutate_exists(sender.clone(), site_id, |site| -> DispatchResult {
                 // Test the user owns this site
                 //let mut site_mod = site.take().ok_or(Error::<T>::InvalidSiteId)?;
                 let mut site_mod = site.as_mut().ok_or(Error::<T>::InvalidSiteId)?;
-
-                let s = sender.clone();
 
                 site_mod.ipfs_cid = ipfs_cid.clone();
 
