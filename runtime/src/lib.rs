@@ -311,6 +311,11 @@ impl pallet_note::Config for Runtime {
     type NoteIndex = u32;
 }
 
+impl pallet_site::Config for Runtime {
+    type Event = Event;
+    type SiteIndex = u32;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
     pub enum Runtime where
@@ -333,6 +338,8 @@ construct_runtime!(
         Utility: pallet_utility::{Pallet, Call, Event},
         // YibanChen Substrate Note pallet
         Note: pallet_note::{Pallet, Storage, Call, Event<T>},
+        // YibanChen Substrate Site pallet
+        Site: pallet_site::{Pallet, Storage, Call, Event<T>},
     }
 );
 
