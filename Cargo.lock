@@ -3683,6 +3683,7 @@ dependencies = [
  "pallet-grandpa",
  "pallet-note",
  "pallet-randomness-collective-flip",
+ "pallet-site",
  "pallet-sudo",
  "pallet-template",
  "pallet-timestamp",
@@ -3980,6 +3981,22 @@ dependencies = [
  "sp-staking",
  "sp-std",
  "sp-trie",
+]
+
+[[package]]
+name = "pallet-site"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "orml-nft",
+ "pallet-balances",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
