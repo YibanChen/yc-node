@@ -155,6 +155,11 @@ default-features = false
 path = '../pallets/site'
 version = '0.1.0'
 
+[dependencies.pallet-name-service]
+default-features = false
+path = '../pallets/name-service'
+version = '0.1.0'
+
 [dependencies.pallet-timestamp]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
